@@ -35,13 +35,15 @@ INSTALLED_APPS += [
     'django_filters',
     'corsheaders',
     'drf_spectacular',
-    'djoser'
+    'djoser',
+    'rest_framework_simplejwt'
 ]
 
 # apps
 INSTALLED_APPS += [
     'api',
     'common',
+    'breaks'
 ]
 
 MIDDLEWARE = [
@@ -100,6 +102,7 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',),
 
     'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.BasicAuthentication',
     ],
 
@@ -172,7 +175,7 @@ SPECTACULAR_SETTINGS = {
         'rest_framework.permissions.IsAuthenticated'],
 
     'SERVE_AUTHENTICATION': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication'
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.BasicAuthentication'],
 
     'SWAGGER_UI_SETTINGS': {
